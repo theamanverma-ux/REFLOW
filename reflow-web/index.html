@@ -394,6 +394,63 @@ body{margin:0}
 .rf.calm .emHead{animation:none}
 .bkIc{width:1.25em;height:1.25em;flex:none;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;margin:0 2px 0 -4px;vertical-align:middle}
 .mBack,.rmBack{display:inline-flex!important;align-items:center;gap:2px}
+
+/* wrap-up flow */
+.wrStep{position:absolute;inset:0;z-index:6;background:#3E5550;display:flex;flex-direction:column;animation:wrIn .35s ease both}
+@keyframes wrIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.wrCele{align-items:center;justify-content:center;gap:10px;padding:0 28px;overflow:hidden;cursor:pointer;background:radial-gradient(120% 80% at 50% 45%,#4C6862 0%,#3E5550 60%,#33463F 100%)}
+.celeGlow{position:absolute;width:360px;height:360px;left:15px;top:170px;border-radius:50%;background:radial-gradient(circle,rgba(245,197,154,.45) 0%,rgba(245,197,154,0) 65%);animation:celeGlow 2.4s ease-in-out infinite}
+@keyframes celeGlow{50%{transform:scale(1.12);opacity:.8}}
+.confP{position:absolute;bottom:112px;display:block;opacity:0;animation:confFly 2.3s cubic-bezier(.12,.75,.3,1) forwards}
+@keyframes confFly{0%{opacity:1;transform:translate(0,0) rotate(0)}55%{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r))}100%{opacity:0;transform:translate(calc(var(--x) * 1.1),calc(var(--y) + 260px)) rotate(calc(var(--r) * 2))}}
+.popper{position:absolute;bottom:72px;width:62px;height:62px;animation:popKick .5s cubic-bezier(.3,1.8,.5,1) both}
+.popper.pL{left:10px}.popper.pR{right:10px;transform:scaleX(-1);animation-name:popKickR}
+@keyframes popKick{0%{transform:scale(.6) rotate(10deg)}40%{transform:scale(1.25) rotate(-8deg)}100%{transform:none}}
+@keyframes popKickR{0%{transform:scaleX(-1) scale(.6) rotate(10deg)}40%{transform:scaleX(-1) scale(1.25) rotate(-8deg)}100%{transform:scaleX(-1)}}
+.celeAvi{position:relative;animation:celeHop 1s cubic-bezier(.3,1.4,.5,1) .15s 2 both;transform-origin:50% 100%}
+@keyframes celeHop{0%,100%{transform:none}20%{transform:scale(1.12,.86)}50%{transform:translateY(-46px) scale(.94,1.08)}78%{transform:scale(1.08,.92)}}
+.celeArmL,.celeArmR{transform-box:fill-box;transform-origin:50% 100%;animation:celeArm .32s ease-in-out 6 alternate}
+.celeArmR{animation-direction:alternate-reverse}
+@keyframes celeArm{from{transform:rotate(-24deg) translateY(-6px)}to{transform:rotate(24deg) translateY(-14px)}}
+.celeT{margin:12px 0 0;font-size:36px;font-weight:300;text-align:center;animation:wrIn .5s ease .35s both}
+.celeStreak{display:flex;align-items:center;gap:8px;margin-top:18px;padding:10px 18px;border-radius:16px;background:rgba(245,197,154,.14);animation:celeStk .6s cubic-bezier(.3,1.6,.5,1) .7s both}
+.celeStreak b{font-size:24px;font-weight:500;color:#F5C59A}.celeStreak span{font-size:14px;color:#DCE6E2}
+@keyframes celeStk{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.celeTap{position:absolute;bottom:36px;font-size:13px;color:rgba(238,243,240,.5);animation:wrIn .5s ease 1.6s both}
+.rf.calm .confP,.rf.calm .popper{display:none}.rf.calm .celeAvi,.rf.calm .celeArmL,.rf.calm .celeArmR,.rf.calm .celeGlow{animation:none}
+@media (prefers-reduced-motion: reduce){.confP,.popper{display:none}.celeAvi,.celeArmL,.celeArmR,.celeGlow{animation:none}}
+.wrNight{align-items:center;padding:96px 28px 40px;background:linear-gradient(180deg,#22302D 0%,#2E403B 45%,#3E5550 100%);overflow:hidden}
+.nightSky i{position:absolute;width:3px;height:3px;border-radius:50%;background:#EEF3F0;animation:twk 2.6s ease-in-out infinite}.nightSky i:nth-child(2n){animation-delay:-1.2s}.nightSky i:nth-child(3n){animation-delay:-.6s}
+@keyframes twk{50%{opacity:.25}}
+.nightMoon{position:absolute;right:52px;top:70px;width:40px;height:40px}
+.wdNote{display:inline-block;margin-top:6px;padding:8px 12px;border-radius:12px;background:rgba(245,197,154,.14);color:#F5C59A;font-size:14px;line-height:1.4}
+.wrapDay{margin-top:26px;min-height:72px;border-radius:20px;padding:12px 10px 12px 16px;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#2E403B,#33463F);border:1px solid rgba(245,197,154,.25)}
+.wdMoon{width:44px;height:44px;border-radius:14px;background:rgba(245,197,154,.16);color:#F5C59A;display:flex;align-items:center;justify-content:center;flex:none}
+.wdStudy{font-size:13px;padding:0 6px;white-space:nowrap}
+.wdTm{width:100%;margin-top:16px;border:none;color:inherit;text-align:left;font-family:inherit;display:flex;flex-direction:column;gap:6px;cursor:pointer}
+
+.wrTop{position:absolute;top:0;left:0;right:0;z-index:7;height:92px;padding:44px 16px 0 10px;display:flex;align-items:center;justify-content:space-between;background:#3E5550}
+.wrBack{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 0 0 8px;border:none;background:none;color:#EEF3F0;font:inherit;font-size:14px;cursor:pointer}
+.wDots{position:absolute;left:50%;top:68px;transform:translate(-50%,-50%);display:flex;gap:6px}.wDot{width:7px;height:7px;border-radius:50%;background:rgba(238,243,240,.25);transition:all .3s}.wDot.past{background:rgba(245,197,154,.55)}.wDot.on{width:20px;border-radius:4px;background:#F5C59A}
+.wrStepIn{animation:wrIn .35s ease both}
+.wrLeft .row{border-bottom:none;border-top:1px solid rgba(238,243,240,.14)}.wrLeft{margin-top:28px;padding:18px 18px 10px;border-radius:22px;background:rgba(238,243,240,.06);border:1px solid rgba(245,197,154,.25)}
+.wrEnd{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding:70px 28px 36px;overflow:hidden;background:linear-gradient(180deg,#22302D 0%,#2E403B 45%,#3E5550 100%)}
+.celeLayer{position:absolute;inset:0;pointer-events:none;animation:celeOut .5s ease 1.9s forwards}
+@keyframes celeOut{to{opacity:0}}
+.wrEnd .celeGlow{left:15px;top:120px}
+.endHero{position:relative;width:100%;height:330px;display:flex;justify-content:center}
+.endCele,.endNight{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.endCele{animation:endCeleOut .5s ease 1.6s forwards}
+@keyframes endCeleOut{to{opacity:0;transform:translateY(-20px) scale(.92)}}
+.endNight{opacity:0;animation:wrIn .6s ease 1.9s forwards}
+.endText,.endBtns{opacity:0;animation:wrIn .6s ease 2.1s forwards}
+.endText{display:flex;flex-direction:column;align-items:center;gap:4px}
+.endBtns{width:100%;margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.wrEnd.skip .endCele,.wrEnd.skip .celeLayer{display:none}.wrEnd.skip .endNight,.wrEnd.skip .endText,.wrEnd.skip .endBtns{animation-delay:0s;animation-duration:.35s}
+.rf.calm .endCele{display:none}.rf.calm .endNight,.rf.calm .endText,.rf.calm .endBtns{animation:none;opacity:1}
+.tmEd{display:flex;align-items:center;gap:6px;padding:10px 0;border-bottom:1px solid rgba(43,58,55,.1)}
+.tmB{width:36px;height:40px;border-radius:10px;border:1px solid rgba(43,58,55,.18);background:#fff;color:#2B3A37;font:inherit;font-size:18px;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;flex:none}
+.tmLen{min-width:48px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums}
 /* polish: 44px hit areas without changing layout */
 .durPill,.wkAdd,.rmMore,.rmCBtn,.grip{position:relative}
 .durPill::after,.wkAdd::after,.rmMore::after,.rmCBtn::after,.grip::after{content:"";position:absolute;inset:-6px -4px}
@@ -1641,6 +1698,14 @@ body{margin:0}
         </sc-if>
         <sc-if value="{{listEnd.show}}" hint-placeholder-val="{{ true }}">
           <div class="{{listEnd.cls}}"><span class="tlEndDot"></span><span style="display: flex; flex-direction: column; gap: 2px;"><span>{{listEnd.text}}</span><span class="mute" style="font-size: 12px;">{{listEnd.sub}}</span></span></div>
+        </sc-if>
+        <sc-if value="{{wrapped}}" hint-placeholder-val="{{ false }}">
+          <button class="card wdTm" onClick="{{wrapCard.seeTm}}" aria-label="See tomorrow in Plan">
+            <span class="lbl" style="color: #F5C59A;">Tomorrow</span>
+            <span style="font-size: 18px; font-weight: 400;">{{wrapCard.tmHead}}</span>
+            <span class="mute" style="font-size: 13px;">{{wrapCard.tmSub}}</span>
+            <sc-if value="{{wrapCard.hasNote}}" hint-placeholder-val="{{ false }}"><span class="wdNote">{{wrapCard.note}}</span></sc-if>
+          </button>
         </sc-if>
         <sc-if value="{{showWrapLink}}" hint-placeholder-val="{{ false }}">
           <button class="btnLine" style="width: 100%; margin-top: 16px; min-height: 52px;" onClick="{{openWrap}}">
@@ -3241,13 +3306,18 @@ body{margin:0}
 <!-- ============ EVENING WRAP-UP ============ -->
 <sc-if value="{{s.wrap}}" hint-placeholder-val="{{ false }}">
 <div class="scr" style="background: #3E5550;">
-  <div class="scroll" style="padding: 56px 24px 44px;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <span class="lbl">{{wr.dateLabel}} · Day wrap-up</span>
-      <button class="iconBtn" style="color: #EEF3F0;" onClick="{{wrapClose}}" aria-label="Close wrap-up">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-      </button>
+  <sc-if value="{{wr.notEnd}}" hint-placeholder-val="{{ true }}">
+    <div class="wrTop">
+      <button class="wrBack" onClick="{{wr.back}}" aria-label="Back"><svg class="bkIc" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4.5L7.5 12L15 19.5"></path></svg></button>
+      <span class="wDots" aria-hidden="true"><sc-for list="{{wr.dots}}" as="d" hint-placeholder-count="3"><i class="{{d.cls}}"></i></sc-for></span>
+      <span class="lbl" style="min-width: 64px; text-align: right;">{{wr.stepLbl}}</span>
     </div>
+  </sc-if>
+
+  <!-- step 1: your day -->
+  <sc-if value="{{wr.stDay}}" hint-placeholder-val="{{ true }}">
+  <div class="scroll" style="padding: 104px 24px 40px;">
+    <span class="lbl">{{wr.dateLabel}} · Day wrap-up</span>
     <div class="zenAvi" aria-hidden="true">
       <div class="zenHalo"></div>
       <div class="zenFloat">
@@ -3323,27 +3393,146 @@ body{margin:0}
       </div>
     </sc-if>
 
-    <sc-if value="{{wr.hasLeft}}" hint-placeholder-val="{{ false }}">
-      <div class="lbl" style="margin: 28px 0 4px;">Still open</div>
-      <sc-for list="{{wr.left}}" as="g" hint-placeholder-count="1">
-        <div class="row" style="gap: 10px; flex-wrap: wrap;">
-          <span class="dot" style="background: {{g.color}};"></span>
-          <span style="flex: 1; font-size: 15px; min-width: 140px;">{{g.title}}</span>
-          <button class="chip" style="min-height: 40px; padding: 0 12px; font-size: 13px;" onClick="{{g.tomorrow}}">Tomorrow</button>
-          <button class="chip" style="min-height: 40px; padding: 0 12px; font-size: 13px;" onClick="{{g.letGo}}">Let go</button>
-        </div>
-      </sc-for>
+    <sc-if value="{{wr.hasLeftW}}" hint-placeholder-val="{{ false }}">
+      <div class="wrLeft">
+        <div class="lbl" style="color: #F5C59A;">Before you close</div>
+        <div style="font-size: 20px; font-weight: 400; margin: 6px 0 2px;">{{wr.leftHead}}</div>
+        <sc-for list="{{wr.leftRows}}" as="g" hint-placeholder-count="2">
+          <div class="row" style="gap: 10px;">
+            <span class="dot" style="background: {{g.color}};"></span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 16px;">{{g.title}}</span><span class="mute" style="font-size: 12px;">{{g.time}} left</span></span>
+            <button class="{{g.tCls}}" style="min-height: 40px; padding: 0 12px; font-size: 13px;" onClick="{{g.tmrw}}">Tomorrow</button>
+            <button class="{{g.lCls}}" style="min-height: 40px; padding: 0 12px; font-size: 13px;" onClick="{{g.letGo}}">Let go</button>
+          </div>
+        </sc-for>
+      </div>
     </sc-if>
-
-    <a class="btnLine" style="width: 100%; margin-top: 28px; min-height: 52px;" href="{{wr.shareLink}}" target="_blank" rel="noopener">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8.2 19z"></path></svg>
-      Share my day on WhatsApp
-    </a>
-    <div style="display: flex; gap: 10px; margin-top: 12px;">
-      <button class="btnLine" style="flex: 1; min-height: 56px;" onClick="{{wrapClose}}">Done for today</button>
-      <button class="btnSoft" style="flex: 1; min-height: 56px;" onClick="{{planTomorrow}}">{{planTomorrowLabel}}</button>
-    </div>
+    <button class="btnSoft" style="width: 100%; margin-top: 26px; min-height: 58px; font-size: 17px; opacity: {{wr.nextOp}};" onClick="{{wr.next}}">Next</button>
+    <sc-if value="{{wr.hasHint}}" hint-placeholder-val="{{ false }}"><p class="mute" style="font-size: 13px; text-align: center; margin: 10px 0 0;">{{wr.nextHint}}</p></sc-if>
   </div>
+  </sc-if>
+
+  <!-- step 2: tomorrow -->
+  <sc-if value="{{wr.stTmrw}}" hint-placeholder-val="{{ false }}">
+  <div class="scroll wrStepIn" style="padding: 104px 24px 40px;">
+    <h1 class="obH" style="margin-top: 0;">{{wr.tmHead}}</h1>
+    <sc-if value="{{wr.tmHas}}" hint-placeholder-val="{{ true }}">
+      <div class="card" style="margin-top: 14px; padding: 4px 18px;">
+        <sc-for list="{{wr.tmRows}}" as="t" hint-placeholder-count="3">
+          <div class="row" style="gap: 12px; padding: 12px 0;"><span class="dot" style="background: {{t.color}};"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 15px;">{{t.title}}</span><sc-if value="{{t.hasSub}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; color: #F5C59A;">{{t.sub}}</span></sc-if></span><span class="mute" style="font-size: 13px;">{{t.time}} · {{t.len}}</span></div>
+        </sc-for>
+        <button class="link" style="width: 100%; text-align: left;" onClick="{{wr.openSheet}}">Edit tomorrow · {{wr.tmTotal}}</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{wr.tmNone}}" hint-placeholder-val="{{ false }}"><p class="obP">Nothing is planned yet. Reflow builds tomorrow from your timetable in the morning.</p></sc-if>
+    <div class="lbl" style="margin: 28px 0 10px;">Anything to remember for tomorrow?</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <sc-for list="{{wr.noteChips}}" as="c" hint-placeholder-count="3"><button class="{{c.cls}}" onClick="{{c.pick}}">{{c.label}}</button></sc-for>
+    </div>
+    <input class="fieldInline boxed" style="width: 100%; margin-top: 14px; min-height: 52px;" value="{{wr.note}}" onChange="{{wr.onNote}}" onKeyDown="{{wr.noteKey}}" placeholder="Or type your own…" aria-label="Note for tomorrow" maxlength="80">
+    <p class="mute" style="font-size: 13px; margin: 8px 0 0;">Optional. Avi will remind you in the morning.</p>
+    <button class="btnSoft" style="width: 100%; margin-top: 26px; min-height: 58px; font-size: 17px;" onClick="{{wr.finish}}">{{wr.finishLabel}}</button>
+  </div>
+  </sc-if>
+
+  <!-- step 3: celebration + goodnight -->
+  <sc-if value="{{wr.stEnd}}" hint-placeholder-val="{{ false }}">
+    <div class="{{wr.celeCls}}" onClick="{{wr.skipCele}}">
+      <div class="nightSky" aria-hidden="true"><i style="left: 18%; top: 12%;"></i><i style="left: 72%; top: 9%;"></i><i style="left: 84%; top: 24%;"></i><i style="left: 30%; top: 26%;"></i><i style="left: 56%; top: 18%;"></i><i style="left: 10%; top: 34%;"></i></div>
+      <svg class="nightMoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="#F5C59A"></path></svg>
+      <sc-if value="{{wr.showCele}}" hint-placeholder-val="{{ false }}">
+        <div class="celeLayer" aria-hidden="true">
+          <div class="celeGlow"></div>
+          <sc-for list="{{wr.conf}}" as="c" hint-placeholder-count="0"><i class="confP" style="{{c.st}}"></i></sc-for>
+          <svg class="popper pL" viewBox="0 0 60 60"><path d="M6 54 L22 16 L44 38 Z" fill="#F5C59A"></path><path d="M6 54 L22 16 L28 22 Z" fill="#D98A5B"></path></svg>
+          <svg class="popper pR" viewBox="0 0 60 60"><path d="M6 54 L22 16 L44 38 Z" fill="#9CC5D9"></path><path d="M6 54 L22 16 L28 22 Z" fill="#7FA3B8"></path></svg>
+        </div>
+      </sc-if>
+      <div class="endHero">
+        <div class="endCele">
+      <div class="celeAvi" aria-hidden="true">
+        <svg viewBox="0 0 200 210" style="width: 150px; height: 158px; overflow: visible; filter: {{aviFilter}};">
+          <g class="aviSpark" fill="#F5C451"><path class="s1" d="M20 50 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"></path><path class="s2" d="M176 36 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"></path><path class="s3" d="M184 110 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"></path></g>
+          <ellipse cx="62" cy="176" rx="34" ry="14" fill="#EBB383"></ellipse><ellipse cx="138" cy="176" rx="34" ry="14" fill="#DFA171"></ellipse>
+          <circle cx="80" cy="46" r="18" fill="#F5C59A"></circle><circle cx="119" cy="42" r="20" fill="#EBB383"></circle><circle cx="116" cy="40.5" r="18.6" fill="#F5C59A"></circle>
+          <path d="M100 40 C142 40 170 74 172 116 C174 156 148 176 100 176 C52 176 26 156 28 116 C30 74 58 40 100 40 Z" fill="#F5C59A"></path>
+          <path d="M156 70 C168 88 174 108 172 124 C170 150 152 170 124 175 C146 160 158 140 160 116 C161 100 160 84 156 70 Z" fill="#EBB383"></path>
+          <path d="M66 108 Q80 94 94 108" stroke="#5A3A26" stroke-width="5" stroke-linecap="round" fill="none"></path><path d="M106 108 Q120 94 134 108" stroke="#5A3A26" stroke-width="5" stroke-linecap="round" fill="none"></path>
+          <ellipse cx="66" cy="124" rx="10" ry="6" fill="#F0A89A" opacity=".75"></ellipse><ellipse cx="134" cy="124" rx="10" ry="6" fill="#F0A89A" opacity=".75"></ellipse>
+          <path d="M86 134 Q100 154 114 134 Z" fill="#5A3A26"></path>
+          <ellipse class="celeArmL" cx="34" cy="92" rx="15" ry="10" fill="#EBB383"></ellipse><ellipse class="celeArmR" cx="166" cy="92" rx="15" ry="10" fill="#DFA171"></ellipse>
+        </svg>
+      </div>
+          <h1 class="celeT">{{wr.celeTitle}}</h1>
+          <sc-if value="{{wr.hasStreak}}" hint-placeholder-val="{{ true }}"><div class="celeStreak"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px;" fill="#F5C59A" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-6 1-9.5z"></path></svg><b>{{wr.streakN}}</b><span>{{wr.streakLbl}}</span></div></sc-if>
+        </div>
+        <div class="endNight">
+      <div class="zenAvi" aria-hidden="true" style="margin-top: 0;">
+        <div class="zenFloat">
+          <svg viewBox="0 0 200 210" style="width: 120px; height: 126px; overflow: visible; filter: {{aviFilter}};">
+            <ellipse cx="62" cy="176" rx="34" ry="14" fill="#EBB383"></ellipse><ellipse cx="138" cy="176" rx="34" ry="14" fill="#DFA171"></ellipse>
+            <g class="zenBreath">
+              <circle cx="80" cy="46" r="18" fill="#F5C59A"></circle><circle cx="119" cy="42" r="20" fill="#EBB383"></circle><circle cx="116" cy="40.5" r="18.6" fill="#F5C59A"></circle>
+              <path d="M100 40 C142 40 170 74 172 116 C174 156 148 176 100 176 C52 176 26 156 28 116 C30 74 58 40 100 40 Z" fill="#F5C59A"></path>
+              <path d="M156 70 C168 88 174 108 172 124 C170 150 152 170 124 175 C146 160 158 140 160 116 C161 100 160 84 156 70 Z" fill="#EBB383"></path>
+              <path d="M66 106 L94 106" stroke="#5A3A26" stroke-width="4.5" stroke-linecap="round"></path><path d="M106 106 L134 106" stroke="#5A3A26" stroke-width="4.5" stroke-linecap="round"></path>
+              <ellipse cx="66" cy="124" rx="9" ry="5" fill="#F0A89A" opacity=".6"></ellipse><ellipse cx="134" cy="124" rx="9" ry="5" fill="#F0A89A" opacity=".6"></ellipse>
+              <path d="M95 138 Q100 141 105 138" stroke="#5A3A26" stroke-width="3.5" stroke-linecap="round" fill="none"></path>
+            </g>
+            <g class="aviZzz" fill="#B9CAC4" font-family="Outfit, sans-serif" font-weight="600"><text class="z1" x="160" y="44" font-size="20">z</text><text class="z2" x="176" y="24" font-size="15">z</text></g>
+          </svg>
+        </div>
+        <div class="zenShadow"></div>
+      </div>
+        </div>
+      </div>
+      <div class="endText">
+        <h1 class="obH" style="text-align: center; margin: 0;">{{wr.nightTitle}}</h1>
+        <p class="obP" style="text-align: center;">{{wr.nightSub}}</p>
+        <sc-if value="{{wr.hasNote}}" hint-placeholder-val="{{ false }}"><p class="wdNote" style="align-self: center; margin-top: 12px;">{{wr.noteLine}}</p></sc-if>
+      </div>
+      <div class="endBtns" onClick="{{wr.stop}}">
+        <button class="btnLine" style="width: 100%; min-height: 54px;" onClick="{{wr.share}}"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8.2 19z"></path></svg>Share my day on WhatsApp</button>
+        <button class="btnSoft" style="width: 100%; min-height: 56px;" onClick="{{wr.close}}">Close</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- early close check -->
+  <sc-if value="{{wr.ask}}" hint-placeholder-val="{{ false }}">
+    <div class="overlay" style="z-index: 8;" onClick="{{wr.askNo}}">
+      <div class="panel" role="dialog" aria-label="{{wr.askTitle}}" onClick="{{wr.stop}}">
+        <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 500; line-height: 1.3;">{{wr.askTitle}}</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #5E6F6B;">{{wr.askSub}}</p>
+        <button class="btnDark" style="width: 100%; margin-top: 22px;" onClick="{{wr.askNo}}">Not yet, keep studying</button>
+        <button class="btnPaperLine" style="width: 100%; margin-top: 10px;" onClick="{{wr.askYes}}">Yes, close the day</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- tomorrow editor sheet -->
+  <sc-if value="{{wr.sheet}}" hint-placeholder-val="{{ false }}">
+    <div class="overlay" style="z-index: 8;" onClick="{{wr.closeSheet}}">
+      <div class="panel" role="dialog" aria-label="Edit tomorrow" onClick="{{wr.stop}}">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="display: flex; flex-direction: column; gap: 2px;"><span class="lblD">Tomorrow</span><span style="font-size: 20px; font-weight: 500;">{{wr.tmTotal}}</span></span>
+          <button class="btnDark" style="min-height: 44px; padding: 0 18px;" onClick="{{wr.closeSheet}}">Done</button>
+        </div>
+        <div style="margin-top: 12px;">
+          <sc-for list="{{wr.tmAll}}" as="t" hint-placeholder-count="3">
+            <div class="tmEd">
+              <span class="dot" style="background: {{t.color}};"></span>
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 15px;">{{t.title}}</span><span style="font-size: 12px; color: #5E6F6B;">{{t.time}}</span></span>
+              <button class="tmB" onClick="{{t.less}}" aria-label="15 minutes shorter">−</button><span class="tmLen">{{t.len}}</span><button class="tmB" onClick="{{t.more}}" aria-label="15 minutes longer">+</button>
+              <button class="tmB" style="opacity: {{t.upOp}};" onClick="{{t.up}}" aria-label="Move earlier"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px;" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"></path></svg></button>
+              <button class="tmB" style="opacity: {{t.downOp}};" onClick="{{t.down}}" aria-label="Move later"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px;" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size: 13px; color: #5E6F6B; margin: 12px 0 0;">Changes are saved when you close the day.</p>
+      </div>
+    </div>
+  </sc-if>
 </div>
 </sc-if>
 
@@ -3716,6 +3905,6 @@ body{margin:0}
 
 </div>
 </template>
-<script src="/app.js?v=202610240126" defer></script>
+<script src="/app.js?v=202610250250" defer></script>
 </body>
 </html>
