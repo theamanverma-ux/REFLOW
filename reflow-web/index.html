@@ -933,6 +933,18 @@ body{margin:0}
 .rf.calm .flowBar{animation:none;height:60%}
 @media (prefers-reduced-motion: reduce){.flowBar{animation:none;height:60%}}
 
+/* today: start card + thin focus bar */
+.hero2{position:relative;margin-top:2px;border-radius:24px;background:#47605A;padding:18px 18px 16px;display:flex;flex-direction:column;gap:4px}
+.h2T{font-size:30px;font-weight:300;line-height:1.15;display:flex;align-items:center;gap:10px;margin-top:4px}.h2T .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.h2S{font-size:14px;color:#DCE6E2}
+.goal2{margin-top:16px;padding:0 4px 18px;border-bottom:1px solid rgba(238,243,240,.14)}.g2N{font-size:20px;font-weight:400}
+.g2Bar{height:4px;border-radius:2px;background:rgba(238,243,240,.14);margin-top:8px;overflow:hidden}.g2Bar div{height:100%;border-radius:2px;background:#F5C59A;transition:width .6s}
+.fullBtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:10px;min-height:44px;background:none;border:none;color:#F5C59A;font-family:inherit;font-size:15px;cursor:pointer}.fullBtn svg{width:16px;height:16px;transition:transform .25s}
+/* plan: add block / subject */
+.pdAddRow{display:flex;gap:10px;margin-top:18px}
+.pdAddB{flex:1;min-height:48px;border-radius:14px;border:1px dashed rgba(238,243,240,.35);background:none;color:#EEF3F0;font-family:inherit;font-size:15px;cursor:pointer}
+.pickChip.on{border-color:#F5C59A;color:#F5C59A}
+.pdAddB.on{border-style:solid;border-color:#F5C59A;color:#F5C59A}
 </style>
 </head>
 <body>
@@ -1556,45 +1568,33 @@ body{margin:0}
     </div>
   </div></div>
   <div class="sheetDark" style="border-radius: {{hd.rad}}px {{hd.rad}}px 0 0;">
-    <!-- exam countdown, flight-row style -->
-    <button class="row" style="padding: 0 0 22px; align-items: flex-end;" onClick="{{goMe}}" aria-label="Edit exam">
-      <span style="display: flex; flex-direction: column; gap: 6px;">
-        <span class="thin" style="font-size: 40px;">{{examAbbr}}</span>
-        <span class="mute" style="font-size: 13px;">{{examDateLabel}}</span>
-      </span>
-      <span style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; padding-bottom: 4px;">
-        <span style="width: 100%; display: flex; align-items: center; gap: 6px;">
-          <span style="flex: 1; border-top: 1px dashed rgba(238,243,240,.3);"></span>
-          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #F5C59A;" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 17c4-1 6-4 8-8s4-6 8-6"></path><circle cx="20" cy="3" r="1.5"></circle></svg>
-          <span style="flex: 1; border-top: 1px dashed rgba(238,243,240,.3);"></span>
-        </span>
-        <span class="mute" style="font-size: 12px;">{{examGapLabel}}</span>
-      </span>
-      <span style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end;">
-        <span class="thin" style="font-size: 40px; color: #F5C59A;">{{daysLeftShort}}</span>
-        <span class="mute" style="font-size: 13px;">{{daysLeftUnit}}</span>
-      </span>
-    </button>
-
-    <!-- progress -->
-    <div style="padding: 22px 0; border-bottom: 1px solid rgba(238,243,240,.14);">
-      <div style="display: flex; align-items: baseline; justify-content: space-between;">
-        <span class="lbl">Today’s focus</span>
-        <span class="mute" style="font-size: 13px;">{{remainingLabel}}</span>
-      </div>
-      <div style="display: flex; align-items: baseline; gap: 8px; margin: 12px 0 14px;">
-        <span class="thin" style="font-size: 52px;">{{actualToday}}</span>
-        <span class="mute" style="font-size: 16px;">/ {{target}} min</span>
-        <span style="margin-left: auto; font-size: 16px; color: #F5C59A;">{{pctToday}}%</span>
-      </div>
-      <div class="bar"><div style="width: {{pctBar}}%;"></div></div>
+    <sc-if value="{{startBar.plain}}" hint-placeholder-val="{{ false }}">
+      <button class="btnSoft startBar {{startBar.glow}}" style="margin-top: 4px;" onClick="{{startBar.go}}" aria-label="{{startBar.aria}}">
+        <span class="startPlay"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-left: 2px;" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+        <span style="font-size: 18px; font-weight: 500;">{{startBar.label}}</span>
+      </button>
+    </sc-if>
+    <!-- start focus card -->
+    <sc-if value="{{startBar.card}}" hint-placeholder-val="{{ true }}">
+    <div class="hero2">
+      <span class="lbl" style="color: #F5C59A;">{{startBar.kicker}}</span>
+      <span class="h2T"><i class="dot" style="background: {{startBar.color}};"></i>{{startBar.title}}</span>
+      <span class="h2S">{{startBar.sub}}</span>
+      <button class="btnSoft startBar {{startBar.glow}}" style="margin-top: 16px;" onClick="{{startBar.go}}" aria-label="{{startBar.aria}}">
+        <span class="startPlay"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-left: 2px;" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+        <span style="font-size: 18px; font-weight: 500;">{{startBar.label}}</span>
+      </button>
     </div>
+    </sc-if>
 
-    <!-- start focus (one button) -->
-    <button class="btnSoft startBar {{startBar.glow}}" style="margin-top: 26px;" onClick="{{startBar.go}}" aria-label="{{startBar.aria}}">
-      <span class="startPlay"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-left: 2px;" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
-      <span style="font-size: 18px; font-weight: 500;">{{startBar.label}}</span>
-    </button>
+    <!-- today's focus (thin bar) -->
+    <div class="goal2">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <span><span class="g2N">{{actualToday}}</span> <span class="mute" style="font-size: 14px;">/ {{target}} min · today’s focus</span></span>
+        <span style="font-size: 14px; color: #F5C59A;">{{pctToday}}%</span>
+      </div>
+      <div class="g2Bar"><div style="width: {{pctBar}}%;"></div></div>
+    </div>
 
     <sc-if value="{{ownNoTimetable}}" hint-placeholder-val="{{ false }}">
       <div class="card" style="margin-top: 18px; display: flex; flex-direction: column; gap: 10px;">
@@ -1698,6 +1698,9 @@ body{margin:0}
         </sc-if>
         <sc-if value="{{listEnd.show}}" hint-placeholder-val="{{ true }}">
           <div class="{{listEnd.cls}}"><span class="tlEndDot"></span><span style="display: flex; flex-direction: column; gap: 2px;"><span>{{listEnd.text}}</span><span class="mute" style="font-size: 12px;">{{listEnd.sub}}</span></span></div>
+        </sc-if>
+        <sc-if value="{{fullShow}}" hint-placeholder-val="{{ true }}">
+          <button class="fullBtn" onClick="{{toggleFull}}">{{fullLbl}}<svg viewBox="0 0 24 24" style="{{fullIc}}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
         </sc-if>
         <sc-if value="{{wrapped}}" hint-placeholder-val="{{ false }}">
           <button class="card wdTm" onClick="{{wrapCard.seeTm}}" aria-label="See tomorrow in Plan">
@@ -2436,7 +2439,7 @@ body{margin:0}
 <div class="scr" style="background: #3E5550;">
   <div class="cbar" style="opacity: {{hd.bar}}; transform: {{hd.barT}};" aria-hidden="true">Proposed plan</div>
   <div class="yscroll" onScroll="{{onScroll}}">
-  <div class="paper hdr" style="padding: 52px 24px 22px;"><div class="hdrIn" style="transform: translateY({{hd.ty}}px) scale({{hd.sc}}); opacity: {{hd.op}};">
+  <div class="paper hdr fixH" style="padding: 52px 24px 22px;"><div class="hdrIn" style="transform: translateY({{hd.ty}}px) scale({{hd.sc}}); opacity: {{hd.op}};">
     <button class="link" style="color: #2B3A37; display: flex; align-items: center; gap: 4px; padding: 0; min-height: 40px;" onClick="{{backToAdjust}}">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
       Change answers
@@ -2549,11 +2552,27 @@ body{margin:0}
           <span style="width: 3px; align-self: stretch; border-radius: 3px; background: {{t.color}};"></span>
           <span style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0;">
             <span style="font-size: 15px; text-decoration: {{t.strike}};">{{t.title}}</span>
-            <span class="mute" style="font-size: 13px;">{{t.subject}} · {{t.dur}} · {{t.prio}}</span>
+            <span class="mute" style="font-size: 13px;">{{t.meta}}</span>
           </span>
           <span class="status {{t.stCls}}">{{t.stLabel}}</span>
         </button>
       </sc-for>
+      <div class="pdAddRow">
+        <button class="{{pdAdd.btnCls}}" onClick="{{pdAdd.toggle}}" aria-expanded="{{pdAdd.open}}">{{pdAdd.btnLbl}}</button>
+      </div>
+      <sc-if value="{{pdAdd.open}}" hint-placeholder-val="{{ false }}">
+        <span class="addPick" style="margin-top: 12px;">
+          <span class="mute" style="font-size: 12px; width: 100%;">Add a block of</span>
+          <sc-for list="{{pdAdd.opts}}" as="o" hint-placeholder-count="2">
+            <button class="pickChip" onClick="{{o.pick}}"><span class="sdot" style="{{o.dot}}"></span>{{o.label}}</button>
+          </sc-for>
+          <button class="{{pdAdd.newCls}}" onClick="{{pdAdd.newTap}}">+ New subject</button>
+        </span>
+        <sc-if value="{{pdAdd.newOpen}}" hint-placeholder-val="{{ false }}">
+          <div class="subAdd" style="margin-top: 10px;"><input class="topicIn" value="{{pw.newSubj}}" onChange="{{pw.onNew}}" onKeyDown="{{pdAdd.newKey}}" placeholder="New subject name" aria-label="New subject name"><button class="btnSoft" style="min-height: 44px; padding: 0 16px;" onClick="{{pdAdd.addNew}}">Add</button></div>
+        </sc-if>
+      </sc-if>
+    </sc-if>
     </sc-if>
 
     <sc-if value="{{planShowAdjust}}" hint-placeholder-val="{{ false }}">
@@ -2722,7 +2741,7 @@ body{margin:0}
 <div class="scr" style="background: #3E5550;">
   <div class="cbar" style="opacity: {{hd.bar}}; transform: {{hd.barT}};" aria-hidden="true">{{calMonthName}} {{calYear}}</div>
   <div class="yscroll" onScroll="{{onScroll}}">
-  <div class="paper hdr" style="padding: 54px 24px 22px;"><div class="hdrIn" style="display: flex; align-items: flex-end; justify-content: space-between; transform: translateY({{hd.ty}}px) scale({{hd.sc}}); opacity: {{hd.op}};">
+  <div class="paper hdr fixH" style="padding: 54px 24px 22px;"><div class="hdrIn" style="display: flex; align-items: flex-end; justify-content: space-between; transform: translateY({{hd.ty}}px) scale({{hd.sc}}); opacity: {{hd.op}};">
     <div>
       <button class="lblD" style="background: none; border: none; padding: 0; min-height: 32px; display: inline-flex; align-items: center; gap: 4px;" onClick="{{backToPlan}}"><svg class="bkIc" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4.5L7.5 12L15 19.5"></path></svg>Plan · {{calYear}}</button>
       <h1 style="margin: 6px 0 0; font-size: 34px; font-weight: 400;">{{calMonthName}}</h1>
@@ -3092,7 +3111,7 @@ body{margin:0}
 <div class="scr rmScr">
   <sc-if value="{{rm.home}}" hint-placeholder-val="{{ true }}">
   <div class="yscroll" style="padding-bottom: 120px;">
-    <div class="paper hdr" style="padding: 54px 24px 22px;">
+    <div class="paper hdr fixH" style="padding: 54px 24px 22px;">
       <div class="lblD">Study with friends</div>
       <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;">
         <h1 style="margin: 6px 0 0; font-size: 34px; font-weight: 400;">Rooms</h1>
@@ -3884,7 +3903,11 @@ body{margin:0}
         <sc-for list="{{draftSubj}}" as="o" hint-placeholder-count="3">
           <button class="chipP {{o.cls}}" onClick="{{o.pick}}" aria-pressed="{{o.on}}"><span class="dot" style="background: {{o.color}};"></span>{{o.name}}</button>
         </sc-for>
+        <button class="{{draftNew.cls}}" style="min-width: 44px; font-size: 18px;" onClick="{{draftNew.tog}}" aria-label="Add a new subject">+</button>
       </div>
+      <sc-if value="{{draftNew.open}}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; gap: 8px; margin-top: 10px;"><input class="field" style="flex: 1;" placeholder="New subject name" value="{{draftNew.val}}" onChange="{{draftNew.on}}" onKeyDown="{{draftNew.key}}" aria-label="New subject name"><button class="btnDark" style="min-height: 48px; padding: 0 18px;" onClick="{{draftNew.add}}">Add</button></div>
+      </sc-if>
       <div class="lblD" style="margin: 18px 0 8px;">Duration</div>
       <div style="display: flex; gap: 8px; flex-wrap: wrap;">
         <sc-for list="{{draftDur}}" as="o" hint-placeholder-count="4">
@@ -3905,6 +3928,6 @@ body{margin:0}
 
 </div>
 </template>
-<script src="/app.js?v=202610250250" defer></script>
+<script src="/app.js?v=202610300041" defer></script>
 </body>
 </html>
