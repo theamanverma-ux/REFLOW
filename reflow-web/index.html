@@ -2915,7 +2915,7 @@ var IV_MOODS={"happy": {"f": "<ellipse cx=\"58\" cy=\"132\" rx=\"10\" ry=\"6\" f
 
     <sc-if value="{{ob.ready}}" hint-placeholder-val="{{ false }}">
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <div class="lbl {{rdyIn}}" style="margin-top: 40px;">All set</div>
+        <div class="lbl {{rdyIn}}" style="margin-top: 6px;">All set</div>
         <h1 class="obH {{rdyIn}}" style="text-align: center; font-size: 34px;">Welcome{{readyName}}.</h1>
         <p class="obP {{rdyIn}}" style="max-width: 290px; transition-delay: .12s;">Your plan flows around your day, and reflows when the day changes.</p>
         <div class="{{rdyIn}}" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(238,243,240,.14); transition-delay: .24s;">
@@ -2923,7 +2923,7 @@ var IV_MOODS={"happy": {"f": "<ellipse cx=\"58\" cy=\"132\" rx=\"10\" ry=\"6\" f
             <div><div class="thin" style="font-size: 30px; color: {{r.color}};">{{r.value}}</div><div class="lbl" style="margin-top: 8px;">{{r.label}}</div></div>
           </sc-for>
         </div>
-        <p class="obP {{rdyIn}}" style="max-width: 290px; margin-top: 18px; font-size: 13px; color: rgba(238,243,240,.72); transition-delay: .5s;">You can change any of this later in Me → My day.</p>
+        <p class="obP rdyEnd {{rdyIn}}" style="max-width: 290px; margin-top: 18px; font-size: 13px; color: rgba(238,243,240,.72); transition-delay: .5s;">You can change any of this later in Me → My day.</p>
       </div>
     </sc-if>
   </div>
@@ -5576,6 +5576,6 @@ var IV_MOODS={"happy": {"f": "<ellipse cx=\"58\" cy=\"132\" rx=\"10\" ry=\"6\" f
 
 </div>
 </template>
-<script src="/app.js?v=202611120054" defer></script>
+<script src="/app.js?v=202611120113" defer></script>
 </body>
 </html>
